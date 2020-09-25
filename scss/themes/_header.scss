@@ -1,0 +1,357 @@
+a {
+    @include transition(all 0.3s ease);
+}
+.gaming-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    width: 100%;
+    z-index: 101;
+    @include transition(all 0.25s ease);
+    .mob-logo {
+        img {
+            max-width: 200px;
+            width: 100%;
+            display: block;
+        }
+    }
+    &.sticky, &.no-banner {
+        @include box-shadow(0 5px 12px rgba($black, 0.01));
+        @include media-breakpoint-up(md) {
+            top: -68px;
+        }
+
+        @include media-breakpoint-up(lg) {
+            background-color: $body-bg ; 
+            
+
+            .gaming-logo-icon {
+                display: block;
+            }
+
+            .gaming-logo {
+                display: none;
+            }
+        }
+        @include media-breakpoint-down(sm) {
+            background-color: rgba($black, 0.8);
+            top: -109px;
+            .hdr-main {
+                padding: 0.75rem 2rem;
+            } 
+        }
+    }
+    &.no-banner {
+        top: 0;
+        border-bottom: 1px solid #f5f5f5;
+        .hdr-top-nav {
+            background-color: rgba($black, 0.6);
+        }
+        +.cbt-sc {
+            margin-top: 50px;
+            @include media-breakpoint-up(lg) {
+                margin-top: 100px;
+            }
+        }
+    }
+}
+
+.hdr-top-nav {
+    padding: 0.75rem 2rem;
+    background-color: #130334;
+    display: flex;
+    justify-content: space-between;
+    .news-scroll {
+        background-color: $primary;
+        @include border-radius(100px);
+        display: flex;
+        padding: 6px;
+        line-height: 16px;
+        .marq-ttl {
+            background-color: #9c8fb4;
+            @include border-radius(100px);
+            padding: 0 10px;
+            color: $black;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+    }
+    .login {
+        background: linear-gradient(87deg,#321a60,#672270);
+        justify-content: space-around;
+        padding: 0.5rem;
+        @include border-radius(6px);
+        position: relative;
+        span {
+            margin-top: 3px;
+        }
+        li {
+            a {
+                display: flex;
+                align-items: center;
+                img {
+                    margin-right: 7px;
+                }
+            }
+        }
+        img {
+            width: 15px;
+        }
+        &:after {
+            content: "";
+            width: 1px;
+            height: 40%;
+            position: absolute;
+            right: 50%;
+            background-color: $white;
+        }
+    }
+    ul {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+
+        li { 
+            padding: 0 22px;
+            &.active a {
+                color: $white;
+            }
+        }
+    }
+
+    a {
+        color: $white;
+        text-decoration: none;
+    }
+}
+
+.hdr-main {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include transition(all 0.3s ease);
+    background: $body-bg;
+}
+
+.hdr-logo {
+    img {
+        max-width: 300px;
+        width: 100%;
+    }
+}
+
+.hdr-main-nav {
+    ul {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+
+        li {
+            padding: 0.75rem 1rem;
+            &.active a {
+                color: $white;
+            }
+        } 
+    }
+    .web-menus {
+        .dropdown-listmenu {
+            @include media-breakpoint-up(lg) {
+              display: none;
+            }
+            .game-menu {
+                text-align: center;
+                margin-bottom: 1rem;
+                .game-img {
+                    img {
+                        max-width: 65px;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        .dropdown-link {
+            @include media-breakpoint-up(lg) {
+            &:hover {
+                .dropdown-listmenu {
+                    display: block;
+                    position: absolute;
+                    width: 90%;
+                    background: $black;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                    padding: 1rem 2rem;
+                }
+            }
+        }
+            .dropdown-click {
+                position: relative;
+                &:after {
+                    content: " ";
+                    background: url(../images/down.png);
+                    background-repeat: no-repeat;
+                    width: 12px;
+                    height: 10px;
+                    position: absolute;
+                    top: 6px;
+                    right: -18px;
+                }
+            }
+        }
+    }
+
+    a {
+        text-transform: uppercase;
+        text-decoration: none;
+        color: $white;
+        font-size: 1rem;
+        &:hover {
+            color: #703bce;
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+        position: fixed;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        padding: 3rem;  
+        background-color: $body-bg;
+        @include transition(all 0.3s ease);
+
+        &.open {
+            top: 0;
+        }
+
+        ul {
+            flex-direction: column;
+            justify-content: flex-start;
+            min-height: 100%;
+            align-items: normal;
+            li {
+                padding: 0.55rem 22px;
+            }
+        }
+
+        a {
+            font-size: 1.2rem;
+        } 
+    }
+}  
+
+.mob-menu {
+    width: 32px;
+    height: 32px;
+    display: block;
+    background: url(../images/icons/hamburger.png) no-repeat center center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    &:hover,
+    &:active,
+    &:focus {
+        outline: none;
+    }
+
+    &.active {
+        position: fixed;
+        top: 25px;
+        right: 2rem;
+        z-index: 12;
+    }
+
+    @include media-breakpoint-up(lg) {
+        display: none;
+    }
+    .bar1,
+  .bar2,
+  .bar3 {
+    width: 28px;
+    height: 4px;
+    background-color: $white;
+    margin: 5px 0;
+    transition: 0.4s;
+  }
+
+  &.active {
+    .bar1 {
+      -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+      transform: rotate(-45deg) translate(-9px, 6px);
+    }
+    .bar2 {
+      opacity: 0;
+    }
+    .bar3 {
+      -webkit-transform: rotate(45deg) translate(-6px, -4px);
+      transform: rotate(45deg) translate(-6px, -4px);
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+    .hdr-main {
+     justify-content: space-between;
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .hdr-main-nav {
+        .web-menus {
+            .dropdown-listmenu {
+                height: 0;
+                overflow: hidden;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                &.show-menu {
+                    // display: block;
+                    visibility: visible;
+                    transition: all 0.3s ease;
+                    height: 200px;
+                    padding: 1rem;
+                    overflow-y: scroll;
+                    border-radius: 12px;
+                    background: #0b0121;
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .hdr-top-nav {
+        text-align: center;
+        .news-scroll {
+            margin: 0.5rem 0;
+        }
+        .login {
+            max-width: 300px;
+            margin: auto !important;
+            left: 0;
+            right: 0;
+        }
+    }
+    .hdr-main-nav {
+        .web-menus {
+            .dropdown-listmenu {
+                .game-menu {
+                    .game-ttl {
+                        text-transform: none;
+                        font-size: 1rem;
+                    }
+                    .game-img {
+                        img {
+                            max-width: 30px;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
